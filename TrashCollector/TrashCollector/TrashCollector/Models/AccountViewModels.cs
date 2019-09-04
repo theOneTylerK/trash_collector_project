@@ -82,9 +82,8 @@ namespace TrashCollector.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        public int RoleId { get; set; }
-
-        public List<IdentityRole> Roles { get; set; }
+        [Display(Name = "User Roles")]
+        public string UserRoles { get; set; }
     }
 
     public class ResetPasswordViewModel

@@ -20,7 +20,7 @@ namespace TrashCollector.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            return View(db.Employees.ToList());
         }
 
         // GET: Customer/Details/5
@@ -45,12 +45,9 @@ namespace TrashCollector.Controllers
             return View(employee);
         }
 
-        // POST: Customer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDayId,EmailAddress")] Employee employee)
+        public ActionResult Create([Bind(Include = "ZipCode,FirstName,LastName,EmailAddress")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -69,12 +66,12 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(employee);
         }
 
         // POST: Customer/Edit/5
@@ -82,15 +79,15 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDayId,EmailAddress")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,EmailAddress")] Employee employee)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Employee");
             }
-            return View(customer);
+            return View(employee);
         }
 
         // GET: Customer/Delete/5
@@ -100,12 +97,12 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
+            Employee employee = db.Employees.Find(id);
+            if (employee == null)
             {
                 return HttpNotFound();
             }
-            return View(customer);
+            return View(employee);
         }
 
         // POST: Customer/Delete/5
@@ -113,10 +110,10 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
+            Employee employee = db.Employees.Find(id);
+            db.Employees.Remove(employee);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Employee");
         }
 
         protected override void Dispose(bool disposing)

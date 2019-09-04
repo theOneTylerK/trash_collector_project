@@ -191,6 +191,10 @@
     <Compile Include="Migrations\201909041833392_EmployeeAdditionMigration.Designer.cs">
       <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909042035039_NewRegistrationMigration.cs" />
+    <Compile Include="Migrations\201909042035039_NewRegistrationMigration.Designer.cs">
+      <DependentUpon>201909042035039_NewRegistrationMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -261,7 +265,7 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Employee.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909041833392_EmployeeAdditionMigration.resx">
       <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909042035039_NewRegistrationMigration.resx">
+      <DependentUpon>201909042035039_NewRegistrationMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
