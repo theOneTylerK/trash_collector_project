@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201909032046526_UpdatedCustomerTableMigration.Designer.cs">
       <DependentUpon>201909032046526_UpdatedCustomerTableMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909041246473_RolesMigration.cs" />
+    <Compile Include="Migrations\201909041246473_RolesMigration.Designer.cs">
+      <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909032046526_UpdatedCustomerTableMigration.resx">
       <DependentUpon>201909032046526_UpdatedCustomerTableMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041246473_RolesMigration.resx">
+      <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
