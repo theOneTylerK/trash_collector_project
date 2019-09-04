@@ -17,9 +17,10 @@ namespace TrashCollector.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext context;
         public AccountController()
         {
+            context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,7 +140,10 @@ namespace TrashCollector.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var roleList = context.Roles.ToList();
+            RegisterViewModel registerViewModel = new RegisterViewModel();
+            registerViewModel.Roles = roleList;
+            return View(registerViewModel);
         }
 
         //
