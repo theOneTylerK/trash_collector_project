@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,9 +187,14 @@
     <Compile Include="Migrations\201909041246473_RolesMigration.Designer.cs">
       <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909041833392_EmployeeAdditionMigration.cs" />
+    <Compile Include="Migrations\201909041833392_EmployeeAdditionMigration.Designer.cs">
+      <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,9 +261,11 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Employee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -281,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909041246473_RolesMigration.resx">
       <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909041833392_EmployeeAdditionMigration.resx">
+      <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
