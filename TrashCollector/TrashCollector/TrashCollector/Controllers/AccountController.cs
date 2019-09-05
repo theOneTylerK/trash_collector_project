@@ -166,11 +166,11 @@ namespace TrashCollector.Controllers
                     if(model.UserRoles == "Customer")
                     {
                         
-                        return RedirectToAction("Edit", "Customer");
+                        return RedirectToAction("Create", "Customer");
                     }
                     else if (model.UserRoles == "Employee")
                     {
-                        return RedirectToAction("Index", "Employee");
+                        return RedirectToAction("Create", "Employee");
                     }
                    
                 }
@@ -458,7 +458,7 @@ namespace TrashCollector.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Edit", "Customer");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

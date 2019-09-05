@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Windows.Forms;
 using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
@@ -51,7 +53,12 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
+                var currentUserId = User.Identity.GetUserId();
+                var UserToAdd = db.Users.Where(u => u.Id == currentUserId).Single();
+                if(customer.EmailAddress == UserToAdd.Email)
+                {
+                    db.Customers.Add(customer);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index", "Customer");
             }
@@ -69,7 +76,8 @@ namespace TrashCollector.Controllers
             Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
-                return HttpNotFound();
+                MessageBox.Show("No customer found. Please create a new one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return View("Create", "Customer");
             }
             return View(customer);
         }
@@ -83,9 +91,16 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                var customerToEdit = db.Customers.Where(c => c.EmailAddress == customer.EmailAddress).Single();
+                customerToEdit.ZipCode = customer.ZipCode;
+                customerToEdit.FirstName = customer.FirstName;
+                customerToEdit.LastName = customer.LastName;
+                customerToEdit.Address = customer.Address;
+                customerToEdit.EmailAddress = customer.Address;
+                customerToEdit.PickUpDayId = customer.PickUpDayId;
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "Customer");
             }
             return View(customer);
         }
