@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -51,6 +52,8 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                var currentUserId = User.Identity.GetUserId();
+                employee.ApplicationUserId = currentUserId;
                 db.Employees.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Employee");
