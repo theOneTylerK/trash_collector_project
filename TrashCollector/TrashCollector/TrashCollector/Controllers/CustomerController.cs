@@ -54,11 +54,8 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 var currentUserId = User.Identity.GetUserId();
-                var UserToAdd = db.Users.Where(u => u.Id == currentUserId).Single();
-                if(customer.EmailAddress == UserToAdd.Email)
-                {
-                    db.Customers.Add(customer);
-                }
+                customer.ApplicationUserId = currentUserId;
+                db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Customer");
             }
@@ -67,7 +64,7 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -91,7 +88,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var customerToEdit = db.Customers.Where(c => c.EmailAddress == customer.EmailAddress).Single();
+                var customerToEdit = db.Customers.Where(c => c.ApplicationUserId == customer.ApplicationUserId).Single();
                 customerToEdit.ZipCode = customer.ZipCode;
                 customerToEdit.FirstName = customer.FirstName;
                 customerToEdit.LastName = customer.LastName;

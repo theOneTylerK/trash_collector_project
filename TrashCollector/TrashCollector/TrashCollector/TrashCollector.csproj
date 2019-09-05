@@ -176,25 +176,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909032010555_InitialMigration.cs" />
-    <Compile Include="Migrations\201909032010555_InitialMigration.Designer.cs">
-      <DependentUpon>201909032010555_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909051604321_newMigration.cs" />
+    <Compile Include="Migrations\201909051604321_newMigration.Designer.cs">
+      <DependentUpon>201909051604321_newMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909032046526_UpdatedCustomerTableMigration.cs" />
-    <Compile Include="Migrations\201909032046526_UpdatedCustomerTableMigration.Designer.cs">
-      <DependentUpon>201909032046526_UpdatedCustomerTableMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909051618590_updatedCreateViewMigration.cs" />
+    <Compile Include="Migrations\201909051618590_updatedCreateViewMigration.Designer.cs">
+      <DependentUpon>201909051618590_updatedCreateViewMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909041246473_RolesMigration.cs" />
-    <Compile Include="Migrations\201909041246473_RolesMigration.Designer.cs">
-      <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909041833392_EmployeeAdditionMigration.cs" />
-    <Compile Include="Migrations\201909041833392_EmployeeAdditionMigration.Designer.cs">
-      <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909042035039_NewRegistrationMigration.cs" />
-    <Compile Include="Migrations\201909042035039_NewRegistrationMigration.Designer.cs">
-      <DependentUpon>201909042035039_NewRegistrationMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201909051657598_changedCustomerViewMigration.cs" />
+    <Compile Include="Migrations\201909051657598_changedCustomerViewMigration.Designer.cs">
+      <DependentUpon>201909051657598_changedCustomerViewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -287,20 +279,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909032010555_InitialMigration.resx">
-      <DependentUpon>201909032010555_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909051604321_newMigration.resx">
+      <DependentUpon>201909051604321_newMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909032046526_UpdatedCustomerTableMigration.resx">
-      <DependentUpon>201909032046526_UpdatedCustomerTableMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909051618590_updatedCreateViewMigration.resx">
+      <DependentUpon>201909051618590_updatedCreateViewMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909041246473_RolesMigration.resx">
-      <DependentUpon>201909041246473_RolesMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909041833392_EmployeeAdditionMigration.resx">
-      <DependentUpon>201909041833392_EmployeeAdditionMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909042035039_NewRegistrationMigration.resx">
-      <DependentUpon>201909042035039_NewRegistrationMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909051657598_changedCustomerViewMigration.resx">
+      <DependentUpon>201909051657598_changedCustomerViewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

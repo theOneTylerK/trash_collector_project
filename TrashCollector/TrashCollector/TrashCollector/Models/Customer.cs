@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TrashCollector.Models
 {
     public class Customer
     {
         [Key]
+        public int Id { get; set; }
+
         [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
         [Display(Name = "First Name")]
@@ -21,6 +24,10 @@ namespace TrashCollector.Models
         public int PickUpDayId { get; set; }
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
     }
 }
