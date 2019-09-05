@@ -21,8 +21,12 @@ namespace TrashCollector.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            var currentEmployee = User.Identity.GetUserId();
+            var employee = db.Employees.Where(e => e.ApplicationUserId == currentEmployee).Single();
+            List<Customer> filteredCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode).ToList();
+            return View(filteredCustomers);
         }
+
 
         // GET: Customer/Details/5
         public ActionResult Details(int? id)

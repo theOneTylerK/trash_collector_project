@@ -192,6 +192,18 @@
     <Compile Include="Migrations\201909051801186_UpdatedEmployeeModelMigration.Designer.cs">
       <DependentUpon>201909051801186_UpdatedEmployeeModelMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.cs" />
+    <Compile Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.Designer.cs">
+      <DependentUpon>201909051955239_RemovedEnumFromCustomerMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.cs" />
+    <Compile Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.Designer.cs">
+      <DependentUpon>201909052006189_AddedZipCodeToCustomerIndexMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909052101198_newMigration1.cs" />
+    <Compile Include="Migrations\201909052101198_newMigration1.Designer.cs">
+      <DependentUpon>201909052101198_newMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -262,9 +274,9 @@
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +307,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909051801186_UpdatedEmployeeModelMigration.resx">
       <DependentUpon>201909051801186_UpdatedEmployeeModelMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.resx">
+      <DependentUpon>201909051955239_RemovedEnumFromCustomerMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.resx">
+      <DependentUpon>201909052006189_AddedZipCodeToCustomerIndexMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909052101198_newMigration1.resx">
+      <DependentUpon>201909052101198_newMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

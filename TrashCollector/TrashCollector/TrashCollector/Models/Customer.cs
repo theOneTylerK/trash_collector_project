@@ -21,13 +21,13 @@ namespace TrashCollector.Models
         public string Address { get; set; }
         public double Balance { get; set; }
         [Display(Name = "Pick Up Day")]
-        public int PickUpDayId { get; set; }
+        public string PickUpDay { get; set; }
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
-
-        [ForeignKey("ApplicationUser")]
+        [ForeignKey ("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
 
     }
 }

@@ -64,7 +64,7 @@ namespace TrashCollector.Controllers
         }
 
         // GET: Customer/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -84,17 +84,18 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDayId,EmailAddress")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDay,EmailAddress")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var customerToEdit = db.Customers.Where(c => c.ApplicationUserId == customer.ApplicationUserId).Single();
+                var currentCustomer = User.Identity.GetUserId();
+                var customerToEdit = db.Customers.Where(c => c.ApplicationUserId == currentCustomer).Single();
                 customerToEdit.ZipCode = customer.ZipCode;
                 customerToEdit.FirstName = customer.FirstName;
                 customerToEdit.LastName = customer.LastName;
                 customerToEdit.Address = customer.Address;
                 customerToEdit.EmailAddress = customer.Address;
-                customerToEdit.PickUpDayId = customer.PickUpDayId;
+                customerToEdit.PickUpDay = customer.PickUpDay;
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", "Customer");
