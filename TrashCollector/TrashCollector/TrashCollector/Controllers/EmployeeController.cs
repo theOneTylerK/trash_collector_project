@@ -19,16 +19,34 @@ namespace TrashCollector.Controllers
             db = new ApplicationDbContext();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string searchInput)
         {
+            List<Customer> filteredCustomers = new List<Customer>();
+            DateTime today = DateTime.Now;
             var currentEmployee = User.Identity.GetUserId();
             var employee = db.Employees.Where(e => e.ApplicationUserId == currentEmployee).Single();
-            List<Customer> filteredCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode).ToList();
+            if(searchInput == null)
+            {
+                filteredCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode && c.PickUpDay == today.DayOfWeek.ToString()).ToList();
+            }
+            else
+            {
+                filteredCustomers = db.Customers.Where(c => c.PickUpDay == searchInput && c.ZipCode == employee.ZipCode).ToList();
+            }
+            
             return View(filteredCustomers);
         }
 
+        public ActionResult ConfirmPickUp(int id)
+        {
+            double charge = 30.00;
+            var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
+            currentCustomer.Balance += charge;
+            db.SaveChanges();
+            return RedirectToAction("Index", "Employee");
+        }
 
-        // GET: Customer/Details/5
+        // GET: Employee/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)

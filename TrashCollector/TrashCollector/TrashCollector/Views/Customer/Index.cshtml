@@ -5,6 +5,8 @@
 }
 
 <h2>Customer Home Page</h2>
+<h8>Please choose a one-time special pick up date in the Edit page</h8>
+<h8>You can choose a Temporary Suspension of service in the Edit page</h8>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -25,6 +27,15 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PickUpDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialPickUpDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempSuspendStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempSuspendEnd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EmailAddress)
@@ -52,6 +63,15 @@
     <td>
         @Html.DisplayFor(modelItem => item.PickUpDay)
     </td>
+    <th>
+        @Html.DisplayFor(modelItem => item.SpecialPickUpDate)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => item.TempSuspendStart)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem => item.TempSuspendEnd)
+    </th>
     <td>
         @Html.DisplayFor(modelItem => item.EmailAddress)
     </td>
