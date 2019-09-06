@@ -19,7 +19,10 @@ namespace TrashCollector.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            var currentCustomer = User.Identity.GetUserId();
+            var customer = db.Customers.Where(e => e.ApplicationUserId == currentCustomer).Single();
+            List<Customer> filteredCustomers = db.Customers.Where(c => c.Id == customer.Id).ToList();
+            return View(filteredCustomers);
         }
 
         // GET: Customer/Details/5
@@ -49,7 +52,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDayId,EmailAddress")] Customer customer)
+        public ActionResult Create([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDay,EmailAddress")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -84,18 +87,10 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDay,EmailAddress")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,Address,Balance,PickUpDay,EmailAddress, ApplicationUserId, Id")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var currentCustomer = User.Identity.GetUserId();
-                var customerToEdit = db.Customers.Where(c => c.ApplicationUserId == currentCustomer).Single();
-                customerToEdit.ZipCode = customer.ZipCode;
-                customerToEdit.FirstName = customer.FirstName;
-                customerToEdit.LastName = customer.LastName;
-                customerToEdit.Address = customer.Address;
-                customerToEdit.EmailAddress = customer.Address;
-                customerToEdit.PickUpDay = customer.PickUpDay;
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", "Customer");
