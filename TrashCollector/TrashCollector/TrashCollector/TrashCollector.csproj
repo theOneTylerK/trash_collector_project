@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201909061351534_ChangedCustomerPropertiesMigration.Designer.cs">
       <DependentUpon>201909061351534_ChangedCustomerPropertiesMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909080120506_changedCustomerModelMigration2.cs" />
+    <Compile Include="Migrations\201909080120506_changedCustomerModelMigration2.Designer.cs">
+      <DependentUpon>201909080120506_changedCustomerModelMigration2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -332,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909061351534_ChangedCustomerPropertiesMigration.resx">
       <DependentUpon>201909061351534_ChangedCustomerPropertiesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909080120506_changedCustomerModelMigration2.resx">
+      <DependentUpon>201909080120506_changedCustomerModelMigration2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
