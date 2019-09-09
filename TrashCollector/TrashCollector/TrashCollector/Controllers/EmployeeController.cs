@@ -64,19 +64,19 @@ namespace TrashCollector.Controllers
             var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
 
             // make geocoding api call using customer address
-            //var address = currentCustomer.Address;
-            //var UriRequest = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=adress&key=AIzaSyCOu9xLef84WxypyuivHYsWJ9liTF9EKCc", Uri.EscapeDataString(address));
-            //WebRequest request = WebRequest.Create(UriRequest);
-            //WebResponse response = request.GetResponse();
-            //XDocument xdoc = XDocument.Load(response.GetResponseStream());
+            var formattedAddress = currentCustomer.Address;
+            var UriRequest = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=" + formattedAddress + "&key=AIzaSyCOu9xLef84WxypyuivHYsWJ9liTF9EKCc", Uri.EscapeDataString(formattedAddress));
+            WebRequest request = WebRequest.Create(UriRequest);
+            WebResponse response = request.GetResponse();
+            XDocument xdoc = XDocument.Load(response.GetResponseStream());
 
-            //XElement result = xdoc.Element("GeocodeResponse").Element("result");
-            //XElement locationElement = result.Element("geometry").Element("location");
-            //XElement latitude = locationElement.Element("lat");
-            //XElement longitude = locationElement.Element("lng");
+            XElement result = xdoc.Element("GeocodeResponse").Element("result");
+            XElement locationElement = result.Element("geometry").Element("location");
+            XElement latitude = locationElement.Element("lat");
+            XElement longitude = locationElement.Element("lng");
 
-            //currentCustomer.Latitude = double.Parse(latitude.ToString());
-            //currentCustomer.Longitude = double.Parse(longitude.ToString());
+            currentCustomer.Latitude = double.Parse(latitude.ToString());
+            currentCustomer.Longitude = double.Parse(longitude.ToString());
 
             return View(currentCustomer);
         }
