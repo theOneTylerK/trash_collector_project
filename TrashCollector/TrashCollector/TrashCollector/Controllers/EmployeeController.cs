@@ -30,16 +30,24 @@ namespace TrashCollector.Controllers
                 filteredCustomers = db.Customers.Where(c => c.ZipCode == employee.ZipCode && c.PickUpDay == today.DayOfWeek.ToString() || c.ZipCode == employee.ZipCode && c.SpecialPickUpDate == today.Date.ToString()).ToList();
                 foreach (Customer customer in filteredCustomers.ToList())
                 {
-                    DateTime parsedStart = DateTime.Parse(customer.TempSuspendStart);
-                    DateTime parsedEnd = DateTime.Parse(customer.TempSuspendEnd);
-                    DateTime suspendMin = DateTime.MinValue;
-                    suspendMin = parsedStart.Date;
-                    DateTime suspendMax = DateTime.MaxValue;
-                    suspendMax = parsedEnd.Date;
-                    if(today.Date >= suspendMin && today.Date <= suspendMax)
+                    if(customer.TempSuspendStart == null)
                     {
-                        filteredCustomers.Remove(customer);
+                        continue;
                     }
+                    else
+                    {
+                        DateTime parsedStart = DateTime.Parse(customer.TempSuspendStart);
+                        DateTime parsedEnd = DateTime.Parse(customer.TempSuspendEnd);
+                        DateTime suspendMin = DateTime.MinValue;
+                        suspendMin = parsedStart.Date;
+                        DateTime suspendMax = DateTime.MaxValue;
+                        suspendMax = parsedEnd.Date;
+                        if (today.Date >= suspendMin && today.Date <= suspendMax)
+                        {
+                            filteredCustomers.Remove(customer);
+                        }
+                    }
+                    
                 }
             }
             else

@@ -4,7 +4,7 @@
     ViewBag.Title = "EmployeeIndex";
 }
 
-<h2>EmployeeIndex</h2>
+<h2>Employee Home Page</h2>
 @using(Html.BeginForm("Index", "Employee", FormMethod.Get))
 {
     @Html.TextBox("SearchInput")<input type= "submit" value = "Search" />
@@ -63,10 +63,10 @@
             </td>
             <td>
                 @Html.ActionLink("Confirm Pick-Up", "ConfirmPickUp", new { id = item.Id }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Customer Profile", "ViewCustomerProfile", new { id = item.Id })
             </td>
         </tr>
     }
 
 </table>
+
