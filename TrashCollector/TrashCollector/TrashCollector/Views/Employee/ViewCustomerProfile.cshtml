@@ -92,9 +92,7 @@
         </dd>
     </dl>
 
-    <p>
-        @Html.ActionLink("Back to Home", "Index")
-    </p>
+
 </div>
 <head>
     <style>
@@ -113,17 +111,20 @@
         // Initialize and add the map
         function initMap() {
             // The location of Uluru
-            var uluru = { lat: -25.344, lng: 131.036 };
+            var customerLocation = { lat: 29.7020710, lng: -95.3733710 };
             // The map, centered at Uluru
             var map = new google.maps.Map(
-                document.getElementById('map'), { zoom: 8, center: uluru });
+                document.getElementById('map'), { zoom: 8, center: customerLocation });
             // The marker, positioned at Uluru
-            var marker = new google.maps.Marker({ position: uluru, map: map });
+            var marker = new google.maps.Marker({ position: customerLocation, map: map });
         }
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOu9xLef84WxypyuivHYsWJ9liTF9EKCc&callback=initMap">
     </script>
 </body>
+<p>
+    @Html.ActionLink("Back to Home", "Index")
+</p>
 
 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
@@ -61,6 +62,22 @@ namespace TrashCollector.Controllers
         public ActionResult ViewCustomerProfile(int id)
         {
             var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
+
+            // make geocoding api call using customer address
+            //var address = currentCustomer.Address;
+            //var UriRequest = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?address=adress&key=AIzaSyCOu9xLef84WxypyuivHYsWJ9liTF9EKCc", Uri.EscapeDataString(address));
+            //WebRequest request = WebRequest.Create(UriRequest);
+            //WebResponse response = request.GetResponse();
+            //XDocument xdoc = XDocument.Load(response.GetResponseStream());
+
+            //XElement result = xdoc.Element("GeocodeResponse").Element("result");
+            //XElement locationElement = result.Element("geometry").Element("location");
+            //XElement latitude = locationElement.Element("lat");
+            //XElement longitude = locationElement.Element("lng");
+
+            //currentCustomer.Latitude = double.Parse(latitude.ToString());
+            //currentCustomer.Longitude = double.Parse(longitude.ToString());
+
             return View(currentCustomer);
         }
 
@@ -131,7 +148,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,EmailAddress")] Employee employee)
+        public ActionResult Edit([Bind(Include = "ZipCode,FirstName,LastName,EmailAddress,ApplicationUserId, Id")] Employee employee)
         {
             if (ModelState.IsValid)
             {
