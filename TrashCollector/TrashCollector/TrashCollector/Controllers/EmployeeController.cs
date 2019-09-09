@@ -50,9 +50,15 @@ namespace TrashCollector.Controllers
             return View(filteredCustomers);
         }
 
+        public ActionResult ViewCustomerProfile(int id)
+        {
+            var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
+            return View(currentCustomer);
+        }
+
         public ActionResult ConfirmPickUp(int id)
         {
-            double charge = 30.00;
+            double charge = 29.99;
             var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
             currentCustomer.Balance += charge;
             db.SaveChanges();

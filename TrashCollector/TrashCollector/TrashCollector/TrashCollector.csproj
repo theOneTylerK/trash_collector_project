@@ -176,45 +176,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909051604321_newMigration.cs" />
-    <Compile Include="Migrations\201909051604321_newMigration.Designer.cs">
-      <DependentUpon>201909051604321_newMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051618590_updatedCreateViewMigration.cs" />
-    <Compile Include="Migrations\201909051618590_updatedCreateViewMigration.Designer.cs">
-      <DependentUpon>201909051618590_updatedCreateViewMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051657598_changedCustomerViewMigration.cs" />
-    <Compile Include="Migrations\201909051657598_changedCustomerViewMigration.Designer.cs">
-      <DependentUpon>201909051657598_changedCustomerViewMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051801186_UpdatedEmployeeModelMigration.cs" />
-    <Compile Include="Migrations\201909051801186_UpdatedEmployeeModelMigration.Designer.cs">
-      <DependentUpon>201909051801186_UpdatedEmployeeModelMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.cs" />
-    <Compile Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.Designer.cs">
-      <DependentUpon>201909051955239_RemovedEnumFromCustomerMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.cs" />
-    <Compile Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.Designer.cs">
-      <DependentUpon>201909052006189_AddedZipCodeToCustomerIndexMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909052101198_newMigration1.cs" />
-    <Compile Include="Migrations\201909052101198_newMigration1.Designer.cs">
-      <DependentUpon>201909052101198_newMigration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909060123133_updatedMigration1.cs" />
-    <Compile Include="Migrations\201909060123133_updatedMigration1.Designer.cs">
-      <DependentUpon>201909060123133_updatedMigration1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909061351534_ChangedCustomerPropertiesMigration.cs" />
-    <Compile Include="Migrations\201909061351534_ChangedCustomerPropertiesMigration.Designer.cs">
-      <DependentUpon>201909061351534_ChangedCustomerPropertiesMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201909080120506_changedCustomerModelMigration2.cs" />
-    <Compile Include="Migrations\201909080120506_changedCustomerModelMigration2.Designer.cs">
-      <DependentUpon>201909080120506_changedCustomerModelMigration2.cs</DependentUpon>
+    <Compile Include="Migrations\201909090157258_InitialMigration.cs" />
+    <Compile Include="Migrations\201909090157258_InitialMigration.Designer.cs">
+      <DependentUpon>201909090157258_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -291,6 +255,8 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Views\Employee\ViewCustomerProfile.cshtml" />
+    <Content Include="Views\Customer\MakePayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,35 +276,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201909051604321_newMigration.resx">
-      <DependentUpon>201909051604321_newMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051618590_updatedCreateViewMigration.resx">
-      <DependentUpon>201909051618590_updatedCreateViewMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051657598_changedCustomerViewMigration.resx">
-      <DependentUpon>201909051657598_changedCustomerViewMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051801186_UpdatedEmployeeModelMigration.resx">
-      <DependentUpon>201909051801186_UpdatedEmployeeModelMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909051955239_RemovedEnumFromCustomerMigration.resx">
-      <DependentUpon>201909051955239_RemovedEnumFromCustomerMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909052006189_AddedZipCodeToCustomerIndexMigration.resx">
-      <DependentUpon>201909052006189_AddedZipCodeToCustomerIndexMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909052101198_newMigration1.resx">
-      <DependentUpon>201909052101198_newMigration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909060123133_updatedMigration1.resx">
-      <DependentUpon>201909060123133_updatedMigration1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909061351534_ChangedCustomerPropertiesMigration.resx">
-      <DependentUpon>201909061351534_ChangedCustomerPropertiesMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909080120506_changedCustomerModelMigration2.resx">
-      <DependentUpon>201909080120506_changedCustomerModelMigration2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909090157258_InitialMigration.resx">
+      <DependentUpon>201909090157258_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

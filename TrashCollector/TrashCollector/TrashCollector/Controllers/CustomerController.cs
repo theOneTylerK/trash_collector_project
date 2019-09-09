@@ -25,6 +25,16 @@ namespace TrashCollector.Controllers
             return View(filteredCustomers);
         }
 
+        public ActionResult MakePayment()
+        {
+            var currentUser = User.Identity.GetUserId();
+            var currentCustomer = db.Customers.Where(c => c.ApplicationUserId == currentUser).Single();
+            var payment = currentCustomer.Balance;
+            currentCustomer.Balance -= payment;
+            db.SaveChanges();
+            return View(currentCustomer);
+        }
+
         // GET: Customer/Details/5
         public ActionResult Details(int? id)
         {
