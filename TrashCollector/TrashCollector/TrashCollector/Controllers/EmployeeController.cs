@@ -62,6 +62,7 @@ namespace TrashCollector.Controllers
         public ActionResult ViewCustomerProfile(int id)
         {
             var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
+            
 
             // make geocoding api call using customer address
             var formattedAddress = currentCustomer.Address;
@@ -75,8 +76,11 @@ namespace TrashCollector.Controllers
             XElement latitude = locationElement.Element("lat");
             XElement longitude = locationElement.Element("lng");
 
-            currentCustomer.Latitude = double.Parse(latitude.ToString());
-            currentCustomer.Longitude = double.Parse(longitude.ToString());
+            string parsedLatitude = latitude.Value;
+            string parsedLongitude = longitude.Value;
+
+            currentCustomer.Latitude = double.Parse(parsedLatitude);
+            currentCustomer.Longitude = double.Parse(parsedLongitude);
 
             return View(currentCustomer);
         }

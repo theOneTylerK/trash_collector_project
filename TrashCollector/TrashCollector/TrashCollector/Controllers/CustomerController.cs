@@ -103,7 +103,7 @@ namespace TrashCollector.Controllers
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details", "Customer");
+                return RedirectToAction("Index", "Customer");
             }
             return View(customer);
         }
