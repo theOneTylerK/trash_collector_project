@@ -62,7 +62,8 @@ namespace TrashCollector.Controllers
         public ActionResult ViewCustomerProfile(int id)
         {
             var currentCustomer = db.Customers.Where(c => c.Id == id).Single();
-            
+            string parsedLatitude = "";
+            string parsedLongitude = "";
 
             // make geocoding api call using customer address
             var formattedAddress = currentCustomer.Address;
@@ -72,17 +73,25 @@ namespace TrashCollector.Controllers
             XDocument xdoc = XDocument.Load(response.GetResponseStream());
 
             XElement result = xdoc.Element("GeocodeResponse").Element("result");
-            XElement locationElement = result.Element("geometry").Element("location");
-            XElement latitude = locationElement.Element("lat");
-            XElement longitude = locationElement.Element("lng");
-
-            string parsedLatitude = latitude.Value;
-            string parsedLongitude = longitude.Value;
-
-            currentCustomer.Latitude = double.Parse(parsedLatitude);
-            currentCustomer.Longitude = double.Parse(parsedLongitude);
-
-            return View(currentCustomer);
+            if (result == null)
+            {
+                parsedLatitude = "28.0043";
+                parsedLongitude = "86.8557";
+                currentCustomer.Latitude = double.Parse(parsedLatitude);
+                currentCustomer.Longitude = double.Parse(parsedLongitude);
+                return View(currentCustomer);
+            }
+            else
+            {
+                XElement locationElement = result.Element("geometry").Element("location");
+                XElement latitude = locationElement.Element("lat");
+                XElement longitude = locationElement.Element("lng");
+                parsedLatitude = latitude.Value;
+                parsedLongitude = longitude.Value;
+                currentCustomer.Latitude = double.Parse(parsedLatitude);
+                currentCustomer.Longitude = double.Parse(parsedLongitude);
+                return View(currentCustomer);
+            }
         }
 
         public ActionResult ConfirmPickUp(int id)
@@ -137,7 +146,10 @@ namespace TrashCollector.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var currentUserId = User.Identity.GetUserId();
+                var currentEmployee = db.Employees.Where(e => e.ApplicationUserId == currentUserId).Single();
+                id = currentEmployee.Id;
+                return View(currentEmployee);
             }
             Employee employee = db.Employees.Find(id);
             if (employee == null)
