@@ -96,26 +96,20 @@
 </div>
 <head>
     <style>
-        /* Set the size of the div element that contains the map */
         #map {
-            height: 400px; /* The height is 400 pixels */
-            width: 50%; /* The width is the width of the web page */
+            height: 400px;
+            width: 50%;
         }
     </style>
 </head>
 <body>
     <h3>Customer Location</h3>
-    <!--The div element for the map -->
     <div id="map"></div>
     <script>
-        // Initialize and add the map
         function initMap() {
-            // The location of Uluru
             var customerLocation = { lat: @Model.Latitude, lng: @Model.Longitude };
-            // The map, centered at Uluru
             var map = new google.maps.Map(
                 document.getElementById('map'), { zoom: 15, center: customerLocation });
-            // The marker, positioned at Uluru
             var marker = new google.maps.Marker({ position: customerLocation, map: map });
         }
     </script>
